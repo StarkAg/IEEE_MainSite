@@ -1,1018 +1,591 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
-    <link rel="stylesheet" href="style.css">
-    <title>IEEE SOCIETY : About</title>
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
-        <title>IEEE Computer Society Team</title>
-        <style>
-            /* Mobile-first styles */
-            body {
-                overflow: hidden;
-                background: black;
-                height: 100vh;
-                font-family: "Montserrat", sans-serif;
-                margin: 0; /* Reset default margins */
-            }
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- 
+    - primary meta tags
+  -->
+  <title>IEEE Society</title>
+  <meta name="title" content="IEEE Society">
+  <meta name="description" content="This is a photographer portfolio html template, made by codewithsadee.">
+
+  <!-- 
+    - favicon
+  -->
+  <link rel="shortcut icon" href="./assets/images/logo1.png" type="image/svg+xml">
+
+  <!-- 
+    - custom css link
+  -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+
+  <!-- 
+    - custom font link
+  -->
+  <link rel="stylesheet" href="./assets/font/font.css">
+
+  <!-- 
+    - preload images
+  -->
+  <link rel="preload" as="image" href="./assets/images/logo2.png">
+  <link rel="preload" as="image" href="./assets/images/loading-circle.svg">
 
-            .solar_systm {
-                transform-style: preserve-3d;
-                pointer-events: none;
-                height: 100%;
-                position: absolute;
-                left: 0;
-                right: 0;
-            }
-
-            * {
-                -webkit-user-select: none;
-                -moz-user-select: none;
-                -ms-user-select: none;
-                user-select: none;
-            }
-
-            .solar_systm .planet,
-            input[type=radio][name=planet]::after,
-            .overlay {
-                position: absolute;
-                left: 50%;
-                top: 50%;
-                transform: translate(-50%, -50%);
-                margin: auto;
-            }
-
-            .solar_systm .planet.neptune .trajectory.ner,
-            .solar_systm .planet.neptune .trajectory.pro,
-            .solar_systm .planet.neptune .trajectory.tri,
-            .solar_systm .planet.uranus .trajectory.umb,
-            .solar_systm .planet.uranus .trajectory.ari,
-            .solar_systm .planet.uranus .trajectory.mir,
-            .solar_systm .planet.saturn .trajectory.enc,
-            .solar_systm .planet.saturn .trajectory.di,
-            .solar_systm .planet.saturn .trajectory.ti,
-            .solar_systm .planet.jupiter .trajectory.ga,
-            .solar_systm .planet.jupiter .trajectory.eu,
-            .solar_systm .planet.jupiter .trajectory.lop,
-            .solar_systm .planet.mars .trajectory.p,
-            .solar_systm .planet.mars .trajectory.d,
-            .solar_systm .planet.earth .trajectory.m {
-                border: 1px dashed white;
-                position: absolute;
-                border-radius: 1700px; /* Reduced for mobile */
-                background: none !important;
-                z-index: -2;
-            }
-
-            .solar_systm .planet {
-                height: 600px; /* Reduced for mobile */
-                width: 600px; /* Reduced for mobile */
-                border-radius: 300px; /* Reduced for mobile */
-                background: red;
-                transition: transform 2.8s 0.23s cubic-bezier(0.33, 0, 0, 1), opacity 2s 0.8s, box-shadow 0s 0s;
-                background-size: 570px 455px !important; /* Reduced for mobile */
-                top: auto;
-                bottom: -460px; /* Reduced for mobile */
-            }
-
-            .solar_systm .planet .moon {
-                height: 100px; /* Reduced for mobile */
-                width: 100px; /* Reduced for mobile */
-                border-radius: 300px; /* Reduced for mobile */
-                background: red;
-                position: absolute;
-                text-align: center;
-                color: white;
-                text-transform: uppercase;
-                opacity: 0;
-                transition: all 0.6s 0.2s;
-            }
-
-            .solar_systm .planet .moon h2 {
-                font-weight: 100;
-                font-size: 20px; /* Reduced for mobile */
-                letter-spacing: 3px; /* Reduced for mobile */
-                margin: 0;
-                position: relative;
-                top: -60px; /* Reduced for mobile */
-            }
-
-            .solar_systm .planet .moon h3 {
-                font-weight: 100;
-                font-size: 10px; /* Reduced for mobile */
-                letter-spacing: 3px; /* Reduced for mobile */
-                color: #fea082;
-                margin: 0;
-                position: relative;
-                top: -60px; /* Reduced for mobile */
-            }
-
-            @keyframes planet {
-                from {
-                    background-position-y: 0px;
-                }
-                to {
-                    background-position-y: -500px; /* Reduced for mobile */
-                }
-            }
-
-            .solar {
-                position: absolute;
-                transform: rotatex(-20deg);
-                perspective: 400px; /* Reduced for mobile */
-                width: 100%;
-                height: 100%;
-                transform-style: preserve-3d;
-            }
-
-            input[type=radio][name=planet]::after {
-                width: 110px; /* Reduced for mobile */
-                height: 110px; /* Reduced for mobile */
-                border-radius: 275px; /* Reduced for mobile */
-                appearance: none;
-                outline: none;
-                cursor: pointer;
-                z-index: 12;
-                left: 9px; /* Reduced for mobile */
-                bottom: 141px; /* Reduced for mobile */
-            }
-
-            .logo {
-                color: white;
-                position: absolute;
-                top: 20px; /* Reduced for mobile */
-                left: 0;
-                right: 0;
-                margin: auto;
-                text-align: center;
-                font-size: 10px; /* Reduced for mobile */
-                text-transform: uppercase;
-                font-weight: 100;
-                letter-spacing: 2px; /* Reduced for mobile */
-            }
-
-            .logo span {
-                font-size: 8px; /* Reduced for mobile */
-                color: #f39041;
-                display: block;
-            }
-
-            label {
-                cursor: pointer;
-            }
-
-            /* Styles for planet previews (using smaller images) */
-            label.mercury > .preview {
-                background: url("https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Mercury_in_color_-_Prockter07_centered.jpg/220px-Mercury_in_color_-_Prockter07_centered.jpg") !important;
-            }
-
-            label.venus > .preview {
-                background: url("https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Venus-real_color.jpg/220px-Venus-real_color.jpg") !important;
-            }
-
-            label.earth > .preview {
-                background: url("https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/The_Blue_Marble_%28remastered%29.jpg/220px-The_Blue_Marble_%28remastered%29.jpg") !important;
-            }
-
-            label.mars > .preview {
-                background: url("https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/OSIRIS_Mars_true_color.jpg/220px-OSIRIS_Mars_true_color.jpg") !important;
-            }
-
-            label.jupiter > .preview {
-                background: url("https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Jupiter_and_its_shrunken_Great_Red_Spot.jpg/220px-Jupiter_and_its_shrunken_Great_Red_Spot.jpg") !important;
-            }
-
-            label.saturn > .preview {
-                background: url("https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Saturn_during_Equinox.jpg/220px-Saturn_during_Equinox.jpg") !important;
-            }
-
-            label.uranus > .preview {
-                background: url("https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Uranus2.jpg/220px-Uranus2.jpg") !important;
-            }
-
-            label.neptune > .preview {
-                background: url("https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Neptune_Full.jpg/220px-Neptune_Full.jpg") !important;
-            }
-
-            label.pluto > .preview {
-                background: url("https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Pluto_in_True_Color_-_High-Res.jpg/220px-Pluto_in_True_Color_-_High-Res.jpg") !important;
-            }
-
-
-            label.menu {
-                color: white;
-                display: block;
-                position: absolute;
-                cursor: pointer;
-                left: 45px; /* Reduced for mobile */
-                z-index: 2;
-            }
-
-            label.menu:after {
-                display: block;
-                width: 6px; /* Reduced for mobile */
-                height: 6px; /* Reduced for mobile */
-                border: 1px solid white;
-                border-radius: 30px; /* Reduced for mobile */
-                content: "";
-                z-index: 2;
-                position: absolute;
-                top: -2px; /* Reduced for mobile */
-                left: -2px; /* Reduced for mobile */
-            }
-
-            label.menu:hover h2, label.menu:hover h3 {
-                opacity: 1;
-            }
-
-            /* Styles for planet pips */
-            label.menu.mercury h2 .pip {
-                background: #E8927C;
-            }
-            label.menu.venus h2 .pip {
-                background: #b45d15;
-            }
-            label.menu.earth h2 .pip {
-                background: #26daaa;
-            }
-            label.menu.mars h2 .pip {
-                background: #e55f45;
-            }
-            label.menu.jupiter h2 .pip {
-                background: orange;
-            }
-            label.menu.saturn h2 .pip {
-                background: #b29d81;
-            }
-            label.menu.uranus h2 .pip {
-                background: #8dcdd8;
-            }
-            label.menu.neptune h2 .pip {
-                background: #4f83e2;
-            }
-            label.menu.pluto h2 .pip {
-                background: #FF8732;
-            }
-
-            label.menu .preview {
-                width: 15px; /* Reduced for mobile */
-                height: 15px; /* Reduced for mobile */
-                background: yellow;
-                float: left;
-                background-size: auto 100% !important;
-                position: absolute;
-                border-radius: 50px; /* Reduced for mobile */
-                box-shadow: 0 -6.5px 5px 1px black inset; /* Reduced for mobile */
-            }
-
-            label.menu .info {
-                position: relative;
-                left: 25px; /* Reduced for mobile */
-                top: 1px;
-            }
-
-            label.menu h2,
-            label.menu h3 {
-                text-transform: uppercase;
-                margin: 0;
-                font-weight: 100;
-                letter-spacing: 1px; /* Reduced for mobile */
-            }
-
-            label.menu h2 {
-                font-size: 7px; /* Reduced for mobile */
-                opacity: 0.4;
-                margin-bottom: 2px; /* Reduced for mobile */
-            }
-
-            label.menu h2 .pip {
-                width: 0;
-                height: 4.5px; /* Reduced for mobile */
-                background: #fea082;
-                float: left;
-                position: relative;
-                top: 1.5px; /* Reduced for mobile */
-                transition: all 0.3s;
-                margin-right: 0px;
-            }
-
-            label.menu h3 {
-                font-size: 5px; /* Reduced for mobile */
-                letter-spacing: 0.5px; /* Reduced for mobile */
-                transition: all 0.3s;
-                opacity: 0.3;
-            }
-
-            /* Adjust menu positioning for mobile */
-            label.menu:nth-of-type(1) {
-                top: calc(50vh + 50px + ((7px + 17px) * 1) + 0px - 184.5px); /* Adjusted values */
-            }
-
-            label.menu:nth-of-type(2) {
-                top: calc(50vh + 50px + ((7px + 17px) * 2) + 0px - 184.5px); /* Adjusted values */
-            }
-
-            label.menu:nth-of-type(3) {
-                top: calc(50vh + 50px + ((7px + 17px) * 3) + 0px - 184.5px); /* Adjusted values */
-            }
-
-            label.menu:nth-of-type(4) {
-                top: calc(50vh + 50px + ((7px + 17px) * 4) + 0px - 184.5px); /* Adjusted values */
-            }
-
-            label.menu:nth-of-type(5) {
-                top: calc(50vh + 50px + ((7px + 17px) * 5) + 0px - 184.5px); /* Adjusted values */
-            }
-
-            label.menu:nth-of-type(6) {
-                top: calc(50vh + 50px + ((7px + 17px) * 6) + 0px - 184.5px); /* Adjusted values */
-            }
-
-            label.menu:nth-of-type(7) {
-                top: calc(50vh + 50px + ((7px + 17px) * 7) + 0px - 184.5px); /* Adjusted values */
-            }
-
-            label.menu:nth-of-type(8) {
-                top: calc(50vh + 50px + ((7px + 17px) * 8) + 0px - 184.5px); /* Adjusted values */
-            }
-
-            label.menu:nth-of-type(9) {
-                top: calc(50vh + 50px + ((7px + 17px) * 9) + 0px - 184.5px); /* Adjusted values */
-            }
-
-            input.read {
-                display: none;
-            }
-
-            .read:checked + label + input + .panel {
-                right: 0;
-            }
-
-            .read:checked + label {
-                width: calc(100% - 210px); /* Reduced for mobile */
-            }
-
-            .read:checked + label::after {
-                opacity: 1;
-                left: 0;
-            }
-
-            .read:checked + label + label {
-                transition: all 0.3s 0.6s;
-                opacity: 1;
-            }
-
-            .read:not(:checked) + label + label {
-                transition: all 0.3s 0s;
-                opacity: 0;
-            }
-
-            label.close {
-                position: absolute;
-                right: 30px; /* Reduced for mobile */
-                opacity: 0;
-                transition: all 0.3s 0.4s;
-                z-index: 3;
-                top: 32.5px; /* Reduced for mobile */
-            }
-
-            label.closeBig {
-                position: absolute;
-                top: 0;
-                left: 0;
-                z-index: 3;
-                height: 100vh;
-                transition: all 0.2s;
-                z-index: 10;
-                width: 0;
-                background: rgba(56, 37, 99, 0.38);
-            }
-
-            label.closeBig::after {
-                content: "Back";
-                text-align: center;
-                font-size: 15px; /* Reduced for mobile */
-                color: white;
-                position: absolute;
-                left: -70px; /* Reduced for mobile */
-                opacity: 0;
-                right: 0;
-                top: 50%;
-                transform: translateY(-50%);
-            }
-
-            .overlay {
-                border-bottom: 510px solid black; /* Reduced for mobile */
-                width: 900px; /* Reduced for mobile */
-                height: 310px; /* Reduced for mobile */
-                top: auto;
-                transform: none;
-                top: -120px; /* Reduced for mobile */
-                left: -151.5px; /* Reduced for mobile */
-                opacity: 1;
-                border-radius: 100%;
-                z-index: 0;
-                box-shadow: 0px -95px 107.5px 55px black inset; /* Reduced for mobile */
-            }
-
-            input[type=radio][name=planet] {
-                appearance: none;
-            }
-            input[type=radio][name=planet]::after {
-                content: "";
-            }
-
-            /* Styles for planet selections */
-            /* ... (Same structure as the original code, but with adjusted values for mobile) ... */
-
-            .solar_systm .planet .trajectory {
-                transition: all 0.6s 0s;
-                opacity: 0;
-            }
-
-            /* Styles for individual planets */
-            /* ... (Same structure as the original code, but with adjusted box-shadow values for mobile) ... */
-
-            .solar_systm .planet_description {
-                width: 310px; /* Reduced for mobile */
-                text-align: center;
-                position: absolute;
-                margin: auto;
-                left: 0;
-                z-index: 2;
-                right: 0;
-                color: white;
-                font-weight: 100;
-                transition: all 0.4s 0s;
-                text-transform: uppercase;
-                z-index: 1;
-            }
-
-            /* ... (Styles for planet description colors) ... */
-
-            .solar_systm .planet_description h1,
-            .solar_systm .planet_description h2,
-            .solar_systm .planet_description p,
-            .solar_systm .planet_description a {
-                font-weight: 100;
-                font-size: 6px; /* Reduced for mobile */
-                letter-spacing: 3px; /* Reduced for mobile */
-                margin: 0;
-            }
-
-            .solar_systm .planet_description h1 {
-                letter-spacing: 8px; /* Reduced for mobile */
-                font-size: 17px; /* Reduced for mobile */
-            }
-
-            .solar_systm .planet_description h2,
-            .solar_systm .planet_description a {
-                color: #fabfad;
-            }
-
-            .solar_systm .planet_description h2 {
-                margin-top: 30px; /* Reduced for mobile */
-                margin-bottom: 3px; /* Reduced for mobile */
-            }
-
-            .solar_systm .planet_description p {
-                line-height: 13px; /* Reduced for mobile */
-                margin-top: 7px; /* Reduced for mobile */
-                opacity: 0.9;
-                margin-bottom: 5px; /* Reduced for mobile */
-            }
-
-            .solar_systm .planet_description a {
-                color: #fea082;
-                font-size: 5.5px; /* Reduced for mobile */
-                font-weight: 500;
-                padding: 0 1px 2.5px 0px; /* Reduced for mobile */
-                border-bottom: 1px solid; /* Reduced for mobile */
-                transition: all 0.2s;
-                position: relative;
-                left: 0;
-            }
-
-            .solar_systm .planet_description a:hover {
-                padding: 0 5px 2.5px 5px; /* Reduced for mobile */
-                left: -0.5px; /* Reduced for mobile */
-            }
-
-            .solar_systm .planet_description a span {
-                letter-spacing: 0;
-                margin-left: -2.5px; /* Reduced for mobile */
-            }
-
-            /* Styles for team member panels */
-            .panel {
-                position: absolute;
-                right: -260px; /* Reduced for mobile */
-                width: 150px; /* Reduced for mobile */
-                top: 0;
-                height: 100vh;
-                transition: all 0.2s;
-                color: black;
-                background: white;
-                padding: 5px 30px 0px 30px; /* Reduced for mobile */
-                overflow: scroll;
-            }
-            .panel body::-webkit-scrollbar {
-                width: 0.5em; /* Reduced for mobile */
-            }
-            .panel body::-webkit-scrollbar-track {
-                -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3); /* Reduced for mobile */
-            }
-            .panel body::-webkit-scrollbar-thumb {
-                background-color: darkgrey;
-                outline: 0.5px solid slategrey; /* Reduced for mobile */
-            }
-            .panel .profile {
-                padding-top: 2px; /* Reduced for mobile */
-            }
-            .panel .profile p {
-                line-height: 5px; /* Reduced for mobile */
-            }
-            .panel .profile p span {
-                font-weight: 600;
-                color: black;
-            }
-            .panel img {
-                border-radius: 1px; /* Reduced for mobile */
-                width: 100%;
-            }
-            .panel h1 {
-                text-transform: uppercase;
-                font-weight: 100;
-                margin: 0 0 0 0;
-                letter-spacing: 1.5px; /* Reduced for mobile */
-                top: 0;
-                padding: 24.5px 0 0 0; /* Reduced for mobile */
-                width: 100%;
-                font-size: 10px; /* Reduced for mobile */
-            }
-            .panel h1::after {
-                width: 15px; /* Reduced for mobile */
-                height: 1px; /* Reduced for mobile */
-                background: black;
-                display: block;
-                content: "";
-                margin-bottom: 15px; /* Reduced for mobile */
-                margin-top: 4px; /* Reduced for mobile */
-            }
-            .panel h2 {
-                font-size: 6.5px; /* Reduced for mobile */
-                text-transform: uppercase;
-                font-weight: 600;
-                margin-top: 15px; /* Reduced for mobile */
-            }
-            .panel h2::after {
-                width: 15px; /* Reduced for mobile */
-                height: 1px; /* Reduced for mobile */
-                background: black;
-                display: block;
-                content: "";
-                margin-top: 4px; /* Reduced for mobile */
-            }
-            .panel p {
-                color: #a0a0a0;
-                font-size: 6px; /* Reduced for mobile */
-                line-height: 10px; /* Reduced for mobile */
-            }
-        </style>
 </head>
-<body>
-<h1 class='logo'>
-    IEEE : Computer Society
-    <span>Our Team :</span>
-</h1>
-<input class='planet9' id='pluto' type='radio' name='planet'>
-<label class='menu pluto' for='pluto'>
-    <div class='preview'></div>
-    <div class='info'>
-        <h2>
-            <div class='pip'></div>
-            Corporate
-        </h2>
-        <h3>39.5 AU</h3>
-    </div>
-</label>
-<input class='planet8' id='neptune' type='radio' name='planet'>
-<label class='menu neptune' for='neptune'>
-    <div class='preview'></div>
-    <div class='info'>
-        <h2>
-            <div class='pip'></div>
-            Public Relations
-        </h2>
-        <h3>30.06 AU</h3>
-    </div>
-</label>
-<input class='planet7' id='uranus' type='radio' name='planet'>
-<label class='menu uranus' for='uranus'>
-    <div class='preview'></div>
-    <div class='info'>
-        <h2>
-            <div class='pip'></div>
-            Creatives Team
-        </h2>
-        <h3>19.18 AU</h3>
-    </div>
-</label>
-<input class='planet6' id='saturn' type='radio' name='planet'>
-<label class='menu saturn' for='saturn'>
-    <div class='preview'></div>
-    <div class='info'>
-        <h2>
-            <div class='pip'></div>
-            Operations
-        </h2>
-        <h3>9.539 AU</h3>
-    </div>
-</label>
-<input class='planet5' id='jupiter' type='radio' name='planet'>
-<label class='jupiter menu' for='jupiter'>
-    <div class='preview'></div>
-    <div class='info'>
-        <h2>
-            <div class='pip'></div>
-            Social Media
-        </h2>
-        <h3>5.203 AU</h3>
-    </div>
-</label>
-<input class='planet4' id='mars' type='radio' name='planet' checked='checked'>
-<label class='mars menu' for='mars'>
-    <div class='preview'></div>
-    <div class='info'>
-        <h2>
-            <div class='pip'></div>
-            Marketing Team
-        </h2>
-        <h3>1.524 AU</h3>
-    </div>
-</label>
-<input class='planet3' id='earth' type='radio' name='planet' checked='checked'>
-<label class='earth menu' for='earth'>
-    <div class='preview'></div>
-    <div class='info'>
-        <h2>
-            <div class='pip'></div>
-            Design Team
-        </h2>
-        <h3>1 AU</h3>
-    </div>
-</label>
-<input class='planet2' id='venus' type='radio' name='planet' checked='checked'>
-<label class='menu venus' for='venus'>
-    <div class='preview'></div>
-    <div class='info'>
-        <h2>
-            <div class='pip'></div>
-            Web Team
-        </h2>
-        <h3>0.723 AU</h3>
-    </div>
-</label>
-<input class='planet1' id='mercury' type='radio' name='planet' checked='checked'>
-<label class='menu mercury' for='mercury'>
-    <div class='preview'></div>
-    <div class='info'>
-        <h2>
-            <div class='pip'></div>
-            Core Team
-        </h2>
-        <h3>0.39 AU</h3>
-    </div>
-</label>
-<div class='solar'>
-    <div class='solar_systm'>
-        <div class='mercury planet'>
-            <div class='mercury planet_description'>
-                <h2>Team</h2>
-                <h1>Core Team</h1>
-                <p>Like Mercury, closest to the sun, the Core Team is quick, agile, and central to all operations, rapidly responding to challenges and guiding the organization’s course with precision.</p>
-                <label for='readMercury'>
-                    <a>
-                        Read Mor
-                        <span>e</span>
-                    </a>
-                </label>
-            </div>
-            <div class='overlay'></div>
-        </div>
-    </div>
-    <div class='solar_systm'>
-        <div class='planet venus'>
-            <div class='planet_description venus'>
-                <h2>Team</h2>
-                <h1>Web Team</h1>
-                <p>Like Venus, the Web Team creates a visually stunning and harmonious digital landscape, ensuring the organization’s online presence is as beautiful as it is functional.</p>
-                <label for='readVenus'>
-                    <a>
-                        Read Mor
-                        <span>e</span>
-                    </a>
-                </label>
-            </div>
-            <div class='overlay'></div>
-        </div>
-    </div>
-    <div class='solar_systm'>
-        <div class='earth planet'>
-            <div class='moon moon'>
-                <h3>Moon</h3>
-                <h2>Moon</h2>
-            </div>
-            <div class='m trajectory'></div>
-            <div class='earth planet_description'>
-                <h2>Team</h2>
-                <h1>Design Team</h1>
-                <p>Grounded like Earth, the Design Team builds the foundation of creativity, nurturing the brand’s aesthetics and visual identity while maintaining balance and sustainability.</p>
-                <label for='readEarth'>
-                    <a>
-                        Read Mor
-                        <span>e</span>
-                    </a>
-                </label>
-            </div>
-            <div class='overlay'></div>
-        </div>
-    </div>
-    <div class='solar_systm'>
-        <div class='mars planet'>
-            <div class='deimos moon'>
-                <h3>Moon</h3>
-                <h2>Deimos</h2>
-            </div>
-            <div class='d trajectory'></div>
-            <div class='moon phoebos'>
-                <h3>Moon</h3>
-                <h2>Phoebos</h2>
-            </div>
-            <div class='p trajectory'></div>
-            <div class='mars planet_description'>
-                <h2>Team</h2>
-                <h1>Marketing Team</h1>
-                <p>Bold and driven like Mars, the Marketing Team is the force behind growth, taking calculated risks to conquer new territories and expand the organization’s reach.</p>
-                <label for='readMars'>
-                    <a>
-                        Read Mor
-                        <span>e</span>
-                    </a>
-                </label>
-            </div>
-            <div class='overlay'></div>
-        </div>
-    </div>
-    <div class='solar_systm'>
-        <div class='jupiter planet'>
-            <div class='lo moon'>
-                <h3>Moon</h3>
-                <h2>Io</h2>
-            </div>
-            <div class='europa moon'>
-                <h3>Moon</h3>
-                <h2>Europa</h2>
-            </div>
-            <div class='ganymede moon'>
-                <h3>Moon</h3>
-                <h2>Ganymede</h2>
-            </div>
-            <div class='lop trajectory'></div>
-            <div class='eu trajectory'></div>
-            <div class='ga trajectory'></div>
-            <div class='jupiter planet_description'>
-                <h2>Team</h2>
-                <h1>Social Media</h1>
-                <p>Vast and influential like Jupiter, the Social Media Team dominates the conversation, attracting attention and fostering dynamic interactions across platforms.</p>
-                <label for='readJupiter'>
-                    <a>
-                        Read Mor
-                        <span>e</span>
-                    </a>
-                </label>
-            </div>
-            <div class='overlay'></div>
-        </div>
-    </div>
-    <div class='solar_systm'>
-        <div class='planet saturn'>
-            <div class='moon titan'>
-                <h3>Moon</h3>
-                <h2>Titan</h2>
-            </div>
-            <div class='dione moon'>
-                <h3>Moon</h3>
-                <h2>Dione</h2>
-            </div>
-            <div class='enceladus moon'>
-                <h3>Moon</h3>
-                <h2>Enceladus</h2>
-            </div>
-            <div class='ti trajectory'></div>
-            <div class='di trajectory'></div>
-            <div class='enc trajectory'></div>
-            <div class='planet_description saturn'>
-                <h2>Team</h2>
-                <h1>Operations Team</h1>
-                <p>Like Saturn, with its structured rings, the Operations Team ensures the organization’s processes are orderly and efficient, maintaining stability and supporting expansion.</p>
-                <label for='readSaturn'>
-                    <a>
-                        Read Mor
-                        <span>e</span>
-                    </a>
-                </label>
-            </div>
-            <div class='overlay'></div>
-        </div>
-    </div>
-    <div class='solar_systm'>
-        <div class='planet uranus'>
-            <div class='miranda moon'>
-                <h3>Moon</h3>
-                <h2>Miranda</h2>
-            </div>
-            <div class='ariel moon'>
-                <h3>Moon</h3>
-                <h2>Ariel</h2>
-            </div>
-            <div class='moon umbriel'>
-                <h3>Moon</h3>
-                <h2>Umbriel</h2>
-            </div>
-            <div class='mir trajectory'></div>
-            <div class='ari trajectory'></div>
-            <div class='trajectory umb'></div>
-            <div class='planet_description uranus'>
-                <h2>Team</h2>
-                <h1>Creatives Team</h1>
-                <p>Innovative and unconventional, the Creatives bring fresh ideas, reshaping the organization's visual and conceptual direction with bold designs.</p>
-                <label for='readUranus'>
-                    <a>
-                        Read Mor
-                        <span>e</span>
-                    </a>
-                </label>
-            </div>
-            <div class='overlay'></div>
-        </div>
-    </div>
-    <div class='solar_systm'>
-        <div class='neptune planet'>
-            <div class='moon triton'>
-                <h3>Moon</h3>
-                <h2>Triton</h2>
-            </div>
-            <div class='moon proteus'>
-                <h3>Moon</h3>
-                <h2>Proteus</h2>
-            </div>
-            <div class='moon nereid'>
-                <h3>Moon</h3>
-                <h2>Nereid</h2>
-            </div>
-            <div class='trajectory tri'></div>
-            <div class='pro trajectory'></div>
-            <div class='ner trajectory'></div>
-            <div class='neptune planet_description'>
-                <h2>Team</h2>
-                <h1>Public Relations</h1>
-                <p>Far-reaching and strategic, the PR Team manages the organization’s image, aligning public perception with its mission.</p>
-                <label for='readNeptune'>
-                    <a>
-                        Read Mor
-                        <span>e     </span>
-                    </a>
-                </label>
-            </div>
-            <div class='overlay'></div>
-        </div>
-    </div>
-    <div class='solar_systm'>
-        <div class='planet pluto'>
-            <div class='planet_description pluto'>
-                <h2>Team</h2>
-                <h1>Corporate</h1>
-                <p>Deep and methodical, the Corporate Team oversees governance and strategy, ensuring long-term alignment with the organization’s goals.</p>
-                <label for='readPluto'>
-                    <a>
-                        Read Mor
-                        <span>e     </span>
-                    </a>
-                </label>
-            </div>
-            <div class='overlay'>               </div>
-        </div>
-    </div>
-</div>
-<input class='read' id='readMercury' type='radio' name='mercuryRead'>
-<label class='closeBig' for='closeMercury'></label>
-<input class='read' id='closeMercury' type='radio' name='mercuryRead'>
-<div class='panel'>
-    <h1>Vice Chair</h1>
-    <h2>Pranesh D</h2>
-    <img src='./pd.jpg'>
-    <p>As Vice Chair, I approach every challenge with the focus of a Jedi Knight, balancing work with passion and precision. Photography and gaming keep me grounded, while my leadership drives the team toward achieving our goals.</p>
-    <br>
-    <h1>Secretary</h1>
-    <h2>Keshav Gupta</h2>
-    <img src='./kg.jpg'>
-    <p>As Secretary, I ensure smooth communication and organization within the team. With the precision of a strategist, I manage tasks efficiently. Outside of work, my love for writing and photography helps me stay creative and balanced.</p>
-    <br>
-    <h1>Vice Chair</h1>
-    <h2>Harsh Agarwal</h2>
-    <img src='./ha.jpg'>
-    <p>As Treasurer, I combine a passion for technology and finance to manage the club's finances with transparency. My experience in stock markets and technical projects drives innovative, efficient solutions for sustainable growth.</p>
-    <br>
 
-</div>
-<input class='read' id='readVenus' type='radio' name='venusRead'>
-<label class='closeBig' for='closeVenus'></label>
-<input class='read' id='closeVenus' type='radio' name='venusRead'>
-<div class='panel'>
-    <h1>Head</h1>
-    <h2>Akshit Ohri</h2>
-    <img src='./ao.jpg'>
-    <p>As the Head of Web Development, I lead a talented team in crafting innovative, high-performance websites that blend functionality with sleek design. With a passion for clean code and user-focused experiences, I thrive on transforming complex ideas into seamless digital solutions, ensuring every project is impactful, scalable, and aligned with the latest web technologies.</p>
-    <br>
-</div>
-<input class='read' id='readEarth' type='radio' name='earthRead'>
-<label class='closeBig' for='closeEarth'></label>
-<input class='read' id='closeEarth' type='radio' name='earthRead'>
-<div class='panel'>
-    <h1>Head</h1>
-    <h2>Vidisha Gupta</h2>
-    <img src='./vd.jpg'>
-    <p>As the Head of Design, I move with a passion for turning ideas into visually stunning concepts, I lead a team to craft compelling and intuitive designs. I focus on creating striking visuals that communicate effectively and leave a lasting impression, ensuring every project combines creativity with clarity to resonate with audiences and enhance brand identity.</p>
-    <br>
-</div>
-<input class='read' id='readMars' type='radio' name='marsRead'>
-<label class='closeBig' for='closeMars'></label>
-<input class='read' id='closeMars' type='radio' name='marsRead'>
-<div class='panel'>
-    <h1>Head</h1>
-    <h2>Akshit Ohri</h2>
-    <img src='./ao.jpg'>
-    <p>As the Head of Web Development, I lead a talented team in crafting innovative, high-performance websites that blend functionality with sleek design. With a passion for clean code and user-focused experiences, I thrive on transforming complex ideas into seamless digital solutions, ensuring every project is impactful, scalable, and aligned with the latest web technologies.</p>
-    <br>
-</div>
-<input class='read' id='readJupiter' type='radio' name='jupiterRead'>
-<label class='closeBig' for='closeJupiter'></label>
-<input class='read' id='closeJupiter' type='radio' name='jupiterRead'>
-<div class='panel'>
-    <h1>Head</h1>
-    <h2>Akshit Ohri</h2>
-    <img src='./ao.jpg'>
-    <p>As the Head of Web Development, I lead a talented team in crafting innovative, high-performance websites that blend functionality with sleek design. With a passion for clean code and user-focused experiences, I thrive on transforming complex ideas into seamless digital solutions, ensuring every project is impactful, scalable, and aligned with the latest web technologies.</p>
-    <br>
-</div>
-<input class='read' id='readSaturn' type='radio' name='saturnRead'>
-<label class='closeBig' for='closeSaturn'></label>
-<input class='read' id='closeSaturn' type='radio' name='saturnRead'>
-<div class='panel'>
-    <h1>Head</h1>
-    <h2>Akshit Ohri</h2>
-    <img src='./ao.jpg'>
-    <p>As the Head of Web Development, I lead a talented team in crafting innovative, high-performance websites that blend functionality with sleek design. With a passion for clean code and user-focused experiences, I thrive on transforming complex ideas into seamless digital solutions, ensuring every project is impactful, scalable, and aligned with the latest web technologies.</p>
-    <br>
-</div>
-<input class='read' id='readUranus' type='radio' name='uranusRead'>
-<label class='closeBig' for='closeUranus'></label>
-<input class='read' id='closeUranus' type='radio' name='uranusRead'>
-<div class='panel'>
-    <h1>Head</h1>
-    <h2>Akshit Ohri</h2>
-    <img src='./ao.jpg'>
-    <p>As the Head of Web Development, I lead a talented team in crafting innovative, high-performance websites that blend functionality with sleek design. With a passion for clean code and user-focused experiences, I thrive on transforming complex ideas into seamless digital solutions, ensuring every project is impactful, scalable, and aligned with the latest web technologies.</p>
-    <br>
-</div>
-<input class='read' id='readNeptune' type='radio' name='neptuneRead'>
-<label class='closeBig' for='closeNeptune'></label>
-<input class='read' id='closeNeptune' type='radio' name='neptuneRead'>
-<div class='panel'>
-    <h1>Head</h1>
-    <h2>Akshit Ohri</h2>
-    <img src='./ao.jpg'>
-    <p>As the Head of Web Development, I lead a talented team in crafting innovative, high-performance websites that blend functionality with sleek design. With a passion for clean code and user-focused experiences, I thrive on transforming complex ideas into seamless digital solutions, ensuring every project is impactful, scalable, and aligned with the latest web technologies.</p>
-    <br>
+<body class="active" id="top">
 
-</div>
-<input class='read' id='readPluto' type='radio' name='plutoRead'>
-<label class='closeBig' for='closePluto'></label>
-<input class='read' id='closePluto' type='radio' name='plutoRead'>
-<div class='panel'>
-    <h1>Head</h1>
-    <h2>Akshit Ohri</h2>
-    <img src='./ao.jpg'>
-    <p>As the Head of Web Development, I lead a talented team in crafting innovative, high-performance websites that blend functionality with sleek design. With a passion for clean code and user-focused experiences, I thrive on transforming complex ideas into seamless digital solutions, ensuring every project is impactful, scalable, and aligned with the latest web technologies.</p>
-    <br>
-</div>
+  <!-- 
+    -#PRELOADING
+  -->
+
+  <div class="loading" data-loading>
+    <img src="./assets/images/logo2.png" width="55" height="55" alt="loading" class="img">
+    <img src="./assets/images/loading-circle.svg" width="70" height="70" alt="" class="circle">
+  </div>
+
+
+
+
+
+  <!-- 
+    - #HEADER
+  -->
+
+  <header class="header" data-header>
+    <div class="container">
+
+      <a href="#" class="logo">
+        <img src="./assets/images/IEEE-CS_LogoTM-white.png" width="170" height="40" alt="Richard home">
+      </a>
+
+      <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
+        <img src="./assets/images/menu.svg" width="17" height="17" alt="menu icon">
+      </button>
+
+      <nav class="navbar" data-navbar>
+
+        <div class="navbar-top">
+          <a href="#" class="logo">
+            <img src="./assets/images/IEEE-CS_LogoTM-white.png" width="140" height="40" alt="Richard home" class="img">
+          </a>
+
+          <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
+            <span class="span one"></span>
+            <span class="span two"></span>
+          </button>
+        </div>
+
+        <ul class="navbar-list">
+
+          <li class="navbar-item">
+            <a href="#home" class="navbar-link" data-nav-link>Home</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="#gallery" class="navbar-link" data-nav-link>Gallery</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="#photography" class="navbar-link" data-nav-link>About</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="#contact" class="navbar-link" data-nav-link>Contact us</a>
+          </li>
+
+        </ul>
+
+        <button class="login-btn">
+          <img src="./assets/images/user.svg" width="21" height="21" alt="user icon">
+
+          <span class="span">Login</span>
+        </button>
+
+
+      </nav>
+
+      <div class="overlay" data-nav-toggler data-overlay></div>
+
+    </div>
+  </header>
+
+
+
+
+
+  <main>
+    <article>
+
+      <!-- 
+        - #HERO
+      -->
+
+      <section class="section hero" id="home" aria-label="home">
+        <div class="container">
+
+          <div class="hero-content">
+
+            <h1 class="h1 hero-title">Leaders in</h1>
+
+            <div class="wrapper h2">
+              <strong class="strong" data-letter-effect>Innovation</strong>
+              <strong class="strong" data-letter-effect>Technology</strong>
+              <strong class="strong" data-letter-effect>Excellence</strong>
+              <strong class="strong" data-letter-effect>Advancement</strong>
+            </div>
+
+            <p class="hero-text">78+ Years and counting</p>
+
+          </div>
+
+        </div>
+
+        <img src="./assets/images/hero-shape.svg" width="211" height="189" alt="" class="shape">
+
+      </section>
+
+
+
+      <!-- 
+        - #GALLERY
+      -->
+
+      <section class="section gallery" id="gallery">
+        <div class="container">
+
+          <ul class="gallery-list">
+
+            <li class="gallery-item" data-reveal>
+
+              <div class="gallery-card">
+
+                <figure class="card-banner img-holder has-before" style="--width: 450; --height: 625;">
+                  <img src="./assets/images/IMG-20240907-WA0061.jpg" width="450" height="625" loading="lazy" alt="IEEE"
+                    class="img-cover">
+                </figure>
+
+                <div class="card-content">
+                  <h3 class="h6">
+                    <a href="#" class="card-title">Event</a>
+                  </h3>
+
+                  <span class="card-tag">Event, Main</span>
+                </div>
+
+                <a href="#" class="btn-icon">
+                  <img src="./assets/images/arrow-forward.svg" width="43" height="20" loading="lazy"
+                    alt="arrow-forward icon">
+                </a>
+
+              </div>
+
+              <div class="gallery-card">
+
+                <figure class="card-banner img-holder has-before" style="--width: 450; --height: 625;">
+                  <img src="./assets/images/1_4.JPG" width="450" height="625" loading="lazy"
+                    alt="Lettuce Entertain" class="img-cover">
+                </figure>
+
+                <div class="card-content">
+                  <h3 class="h6">
+                    <a href="#" class="card-title">Event</a>
+                  </h3>
+
+                  <span class="card-tag">Event, Main</span>
+                </div>
+                <a href="#" class="btn-icon">
+                  <img src="./assets/images/arrow-forward.svg" width="43" height="20" loading="lazy"
+                    alt="arrow-forward icon">
+                </a>
+
+              </div>
+
+            </li>
+
+            <li class="gallery-item" data-reveal>
+
+              <div class="gallery-card">
+
+                <figure class="card-banner img-holder has-before" style="--width: 450; --height: 625;">
+                  <img src="./assets/images/1_1.jpg" width="450" height="625" loading="lazy" alt="Leaping Lizard"
+                    class="img-cover">
+                </figure>
+
+                <div class="card-content">
+                  <h3 class="h6">
+                    <a href="#" class="card-title">Leaping Lizard</a>
+                  </h3>
+
+                  <span class="card-tag">Model, Fashion</span>
+                </div>
+
+                <a href="#" class="btn-icon">
+                  <img src="./assets/images/arrow-forward.svg" width="43" height="20" loading="lazy"
+                    alt="arrow-forward icon">
+                </a>
+
+              </div>
+
+              <div class="gallery-card">
+
+                <figure class="card-banner img-holder has-before" style="--width: 450; --height: 625;">
+                  <img src="./assets/images/1_2.JPG" width="450" height="625" loading="lazy" alt="Juan More Taco"
+                    class="img-cover">
+                </figure>
+
+                <div class="card-content">
+                  <h3 class="h6">
+                    <a href="#" class="card-title">Event</a>
+                  </h3>
+
+                  <span class="card-tag">Event, Main</span>
+                </div>
+
+                <a href="#" class="btn-icon">
+                  <img src="./assets/images/arrow-forward.svg" width="43" height="20" loading="lazy"
+                    alt="arrow-forward icon">
+                </a>
+
+              </div>
+
+            </li>
+
+            <li class="gallery-item" data-reveal>
+
+              <div class="gallery-card">
+
+                <figure class="card-banner img-holder has-before" style="--width: 450; --height: 625;">
+                  <img src="./assets/images/1_3.jpg" width="450" height="625" loading="lazy" alt="Goldilox Bagels"
+                    class="img-cover">
+                </figure>
+
+                <div class="card-content">
+                  <h3 class="h6">
+                    <a href="#" class="card-title">Event</a>
+                  </h3>
+
+                  <span class="card-tag">Event, Main</span>
+                </div>
+
+                <a href="#" class="btn-icon">
+                  <img src="./assets/images/arrow-forward.svg" width="43" height="20" loading="lazy"
+                    alt="arrow-forward icon">
+                </a>
+
+              </div>
+
+              <div class="gallery-card">
+
+                <figure class="card-banner img-holder has-before" style="--width: 450; --height: 625;">
+                  <img src="./assets/images/1_5.JPG" width="450" height="625" loading="lazy" alt="Cookie Monstah"
+                    class="img-cover">
+                </figure>
+
+                <div class="card-content">
+                  <h3 class="h6">
+                    <a href="#" class="card-title">Event</a>
+                  </h3>
+
+                  <span class="card-tag">Event, Main</span>
+                </div>
+
+                <a href="#" class="btn-icon">
+                  <img src="./assets/images/arrow-forward.svg" width="43" height="20" loading="lazy"
+                    alt="arrow-forward icon">
+                </a>
+
+              </div>
+
+            </li>
+
+            <li class="gallery-item" data-reveal>
+
+              <div class="gallery-card">
+
+                <figure class="card-banner img-holder has-before" style="--width: 450; --height: 625;">
+                  <img src="./assets/images/1_6.JPG" width="450" height="625" loading="lazy"
+                    alt="Divine Pastabilities" class="img-cover">
+                </figure>
+
+                <div class="card-content">
+                  <h3 class="h6">
+                    <a href="#" class="card-title">Event</a>
+                  </h3>
+
+                  <span class="card-tag">Event, Main</span>
+                </div>
+
+                <a href="#" class="btn-icon">
+                  <img src="./assets/images/arrow-forward.svg" width="43" height="20" loading="lazy"
+                    alt="arrow-forward icon">
+                </a>
+
+              </div>
+
+              <div class="gallery-card">
+
+                <figure class="card-banner img-holder has-before" style="--width: 450; --height: 625;">
+                  <img src="./assets/images/1_7.JPG" width="450" height="625" loading="lazy"
+                    alt="The Lockhart Bar" class="img-cover">
+                </figure>
+
+                <div class="card-content">
+                  <h3 class="h6">
+                    <a href="#" class="card-title">Event</a>
+                  </h3>
+
+                  <span class="card-tag">Event, Main</span>
+                </div>
+
+                <a href="#" class="btn-icon">
+                  <img src="./assets/images/arrow-forward.svg" width="43" height="20" loading="lazy"
+                    alt="arrow-forward icon">
+                </a>
+
+              </div>
+
+            </li>
+
+          </ul>
+
+          <a href="#service" class="scroll-down">
+            <img src="./assets/images/scroll-down.svg" width="40" height="66" loading="lazy" alt="mouse scroll">
+          </a>
+
+          <img src="./assets/images/gallery-shape.svg" width="220" height="78" loading="lazy" alt="" class="shape">
+
+        </div>
+      </section>
+
+
+
+
+
+      <!-- 
+        - #CATEGORY
+      -->
+
+      <section class="section category" id="photography" aria-label="photography">
+        <h2 class="card-subtitle container">Our Team</h2>
+
+        <div class="container">
+
+          <ul class="category-list">
+
+
+            <li class="category-item" data-reveal>
+              <a href="#" class="category-card">
+
+                <h3 class="h4 card-title">Core Team,</h3>
+
+                <figure class="card-banner img-holder" style="--width: 600; --height: 690;">
+                  <img src="./assets/images/2.jpg" width="600" height="690" loading="lazy" alt="Landscape"
+                    class="img-cover">
+                </figure>
+
+              </a>
+            </li>
+
+            <li class="category-item" data-reveal>
+              <a href="#" class="category-card">
+
+                <h3 class="h4 card-title">WebDev Team,</h3>
+
+                <figure class="card-banner img-holder" style="--width: 600; --height: 690;">
+                  <img src="./assets/images/2_!.jpg" width="600" height="690" loading="lazy" alt="Model"
+                    class="img-cover">
+                </figure>
+
+              </a>
+            </li>
+
+            <li class="category-item" data-reveal>
+              <a href="#" class="category-card">
+
+                <h3 class="h4 card-title">Design Team, </h3>
+
+                <figure class="card-banner img-holder" style="--width: 600; --height: 690;">
+                  <img src="./assets/images/2_2.jpg" width="600" height="690" loading="lazy" alt="Street"
+                    class="img-cover">
+                </figure>
+
+              </a>
+            </li>
+
+            <li class="category-item" data-reveal>
+              <a href="#" class="category-card">
+
+                <h3 class="h4 card-title">Marketing Team, </h3>
+
+                <figure class="card-banner img-holder" style="--width: 600; --height: 690;">
+                  <img src="./assets/images/2_3.jpg" width="600" height="690" loading="lazy" alt="Product"
+                    class="img-cover">
+                </figure>
+
+              </a>
+            </li>
+
+            <li class="category-item" data-reveal>
+              <a href="#" class="category-card">
+
+                <h3 class="h4 card-title">Social Media, </h3>
+
+                <figure class="card-banner img-holder" style="--width: 600; --height: 690;">
+                  <img src="./assets/images/2_4.jpg" width="600" height="690" loading="lazy" alt="Fashion"
+                    class="img-cover">
+                </figure>
+
+              </a>
+            </li>
+
+            <li class="category-item" data-reveal>
+              <a href="#" class="category-card">
+
+                <h3 class="h4 card-title">Operations Team, </h3>
+
+                <figure class="card-banner img-holder" style="--width: 600; --height: 690;">
+                  <img src="./assets/images/2_5.png" width="600" height="690" loading="lazy" alt="Film"
+                    class="img-cover">
+                </figure>
+
+              </a>
+            </li>
+
+            <li class="category-item" data-reveal>
+              <a href="#" class="category-card">
+
+                <h3 class="h4 card-title">Creatives Team, </h3>
+
+                <figure class="card-banner img-holder" style="--width: 600; --height: 690;">
+                  <img src="./assets/images/2_6.jpg" width="600" height="690" loading="lazy" alt="Architecture"
+                    class="img-cover">
+                </figure>
+
+              </a>
+            </li>
+
+            <li class="category-item" data-reveal>
+              <a href="#" class="category-card">
+
+                <h3 class="h4 card-title">Public Relations, </h3>
+
+                <figure class="card-banner img-holder" style="--width: 600; --height: 690;">
+                  <img src="./assets/images/2_7.webp" width="600" height="690" loading="lazy" alt="Event"
+                    class="img-cover">
+                </figure>
+
+              </a>
+            </li>
+
+            <li class="category-item" data-reveal>
+              <a href="#" class="category-card">
+
+                <h3 class="h4 card-title">Corporate, </h3>
+
+                <figure class="card-banner img-holder" style="--width: 600; --height: 690;">
+                  <img src="./assets/images/2_8.jpg" width="600" height="690" loading="lazy" alt="Wedding"
+                    class="img-cover">
+                </figure>
+
+              </a>
+            </li>
+
+
+          </ul>
+
+        </div>
+      </section>
+
+
+
+  <!-- 
+    - #FOOTER
+  -->
+
+  <footer class="footer">
+
+    <div class="footer-top section" id="contact">
+      <div class="container">
+
+        <p class="section-subtitle" data-reveal>Contact Us</p>
+
+        <h2 class="h2 section-title" data-reveal>
+          Have any Queries or Doubts? Send Message.
+        </h2>
+
+        <a href="https://linktr.ee/IEEECS_SRMIST" class="btn-icon" data-reveal>
+          <img src="./assets/images/arrow-forward.svg" width="43" height="20" loading="lazy" alt="arrow-forward icon">
+        </a>
+
+        <img src="./assets/images/3_1.JPG" width="159" height="176" loading="lazy" alt="photography"
+          class="abs-img abs-img-1" data-reveal>
+
+        <img src="./assets/images/3_2.JPG" width="265" height="275" loading="lazy" alt="photography"
+          class="abs-img abs-img-2" data-reveal>
+
+        <img src="./assets/images/3_3.jpg" width="303" height="272" loading="lazy" alt="photography"
+          class="abs-img abs-img-3" data-reveal>
+
+        <img src="./assets/images/1_3.jpg" width="175" height="175" loading="lazy" alt="photography"
+          class="abs-img abs-img-4" data-reveal>
+
+        <img src="./assets/images/footer-shape.svg" width="185" height="134" loading="lazy" alt="" class="shape">
+
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+
+        <a href="#" class="logo">
+          <img src="./assets/images/IEEE-CS_LogoTM-white.png" width="90" height="90" loading="lazy" alt="Richard home">
+        </a>
+
+        <p class="copyright">IEEE Computer Society </p>
+
+      </div>
+    </div>
+
+    <div class="footer-bg has-before">
+      <img src="./assets/images/fot.jpg" width="1920" height="1135" loading="lazy" alt="photography"
+        class="img-cover">
+    </div>
+
+  </footer>
+
+
+
+
+
+  <!-- 
+    - #BACK TO TOP
+  -->
+
+  <a href="#top" class="back-top-btn" aria-label="back to top" data-back-top-btn>0%</a>
+
+
+
+
+
+  <!-- 
+    - #CUSTOM CURSOR
+  -->
+
+  <div class="cursor" data-cursor></div>
+
+
+
+
+
+  <!-- 
+    - custom js link
+  -->
+  <script src="./assets/js/script.js"></script>
+
 </body>
+
 </html>
