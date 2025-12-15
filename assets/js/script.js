@@ -12,6 +12,67 @@ const addEventOnElements = function (elements, eventType, callback) {
 
 
 
+// ---------------------------
+// SUPABASE CLICK TRACKING
+// ---------------------------
+
+// Supabase project values (public anon key is safe for browser usage)
+// You can rotate these from Supabase -> Project Settings -> API.
+const SUPABASE_URL = 'https://phlggcheaajkupppozho.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBobGdnY2hlYWFqa3VwcHBvemhvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjMyODQ0NTgsImV4cCI6MjA3ODg2MDQ1OH0.TGEDpm2uqKceOxAMB5aG6fd8uHESmwfdKF-cqm2QU84';
+
+let supabaseClient = null;
+
+if (window.supabase) {
+  try {
+    supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  } catch (error) {
+    console.error('Failed to init Supabase client', error);
+  }
+}
+
+async function trackButtonClick(buttonId, extra = {}) {
+  if (!supabaseClient) return;
+  try {
+    await supabaseClient
+      .from('button_clicks')
+      .insert({
+        button_id: buttonId,
+        path: window.location.pathname,
+        ...extra
+      });
+  } catch (error) {
+    console.error('Error recording button click', error);
+  }
+}
+
+function initButtonClickTracking() {
+  if (!supabaseClient) return;
+
+  // Track:
+  // - all buttons
+  // - any element with .btn-icon
+  // - team tiles on the home page (anchors with .category-card)
+  // - anything explicitly marked with data-track-button
+  const clickableElements = document.querySelectorAll(
+    'button, .btn-icon, a.category-card, [data-track-button]'
+  );
+
+  clickableElements.forEach((el, index) => {
+    const explicitId = el.getAttribute('data-track-button');
+    const byId = el.id && el.id.trim() !== '' ? el.id : null;
+    const byText = el.textContent ? el.textContent.trim().slice(0, 60) : '';
+
+    const buttonId = explicitId || byId || `${window.location.pathname}#btn-${index}-${byText}`;
+
+    el.addEventListener('click', () => {
+      trackButtonClick(buttonId);
+    });
+  });
+}
+
+
+
 // PRELOADING
 
 const loadingElement = document.querySelector("[data-loading]");
@@ -19,6 +80,8 @@ const loadingElement = document.querySelector("[data-loading]");
 window.addEventListener("load", function () {
   loadingElement.classList.add("loaded");
   document.body.classList.remove("active");
+  // start Supabase click tracking once page is ready
+  initButtonClickTracking();
 });
 
 

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+  <title>Admin Dashboard | IEEE CS</title>
+  <meta name="description" content="Admin dashboard for IEEE CS button click analytics">
+
+  <link rel="shortcut icon" href="./assets/images/logo1.png" type="image/svg+xml">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./assets/font/font.css">
+</head>
+
+<body class="active" id="top">
+
+  <header class="header" data-header>
+    <div class="container">
+      <a href="/" class="logo">
+        <img src="./assets/images/IEEE-CS_LogoTM-white.png" width="170" height="40" alt="IEEE">
+      </a>
+
+      <h1 class="h4" style="margin-left:auto;">Admin Dashboard</h1>
+    </div>
+  </header>
+
+  <main style="padding-top: 120px;">
+    <section class="section" aria-label="Admin analytics">
+      <div class="container">
+        <h2 class="h2 section-title" style="margin-bottom: 10px;">Button Clicks Over Time</h2>
+        <p class="section-text" style="margin-bottom: 20px;">
+          This chart shows total button and team tile clicks per day across the site.
+        </p>
+
+        <button id="refresh-clicks" class="hackathon-btn-primary" style="margin-bottom: 25px;">
+          Refresh Data
+        </button>
+
+        <canvas id="clickChart" style="max-width: 100%;"></canvas>
+
+        <p id="admin-status" class="section-text" style="margin-top: 15px; font-size: 1.4rem;"></p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Supabase + Chart.js -->
+  <script src="https://unpkg.com/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <script>
+    // Must match values in assets/js/script.js
+    const SUPABASE_URL = 'https://phlggcheaajkupppozho.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBobGdnY2hlYWFqa3VwcHBvemhvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjMyODQ0NTgsImV4cCI6MjA3ODg2MDQ1OH0.TGEDpm2uqKceOxAMB5aG6fd8uHESmwfdKF-cqm2QU84';
+
+    const statusEl = document.getElementById('admin-status');
+    const refreshBtn = document.getElementById('refresh-clicks');
+    let chart;
+
+    if (!window.supabase) {
+      statusEl.textContent = 'Supabase client library failed to load.';
+    }
+
+    const supabaseClient = window.supabase
+      ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+      : null;
+
+    async function loadClickData() {
+      if (!supabaseClient) {
+        statusEl.textContent = 'Supabase client not initialized.';
+        return;
+      }
+
+      statusEl.textContent = 'Loading...';
+      refreshBtn.disabled = true;
+
+      try {
+        const { data, error } = await supabaseClient
+          .from('button_clicks')
+          .select('created_at')
+          .order('created_at', { ascending: true })
+          .limit(2000);
+
+        if (error) {
+          console.error(error);
+          statusEl.textContent = 'Error loading data from Supabase.';
+          refreshBtn.disabled = false;
+          return;
+        }
+
+        if (!data || data.length === 0) {
+          statusEl.textContent = 'No click data yet. Try again after some interactions.';
+          refreshBtn.disabled = false;
+          if (chart) {
+            chart.data.labels = [];
+            chart.data.datasets[0].data = [];
+            chart.update();
+          }
+          return;
+        }
+
+        // Aggregate by date (YYYY-MM-DD)
+        const countsByDay = {};
+        data.forEach(row => {
+          const d = new Date(row.created_at);
+          const key = d.toISOString().slice(0, 10);
+          countsByDay[key] = (countsByDay[key] || 0) + 1;
+        });
+
+        const labels = Object.keys(countsByDay).sort();
+        const values = labels.map(l => countsByDay[l]);
+
+        const ctx = document.getElementById('clickChart').getContext('2d');
+        if (!chart) {
+          chart = new Chart(ctx, {
+            type: 'line',
+            data: {
+              labels,
+              datasets: [{
+                label: 'Total Clicks per Day',
+                data: values,
+                borderColor: '#ff457a',
+                backgroundColor: 'rgba(255, 69, 122, 0.2)',
+                tension: 0.25
+              }]
+            },
+            options: {
+              responsive: true,
+              scales: {
+                x: {
+                  title: { display: true, text: 'Date' }
+                },
+                y: {
+                  beginAtZero: true,
+                  title: { display: true, text: 'Clicks' },
+                  ticks: { precision: 0 }
+                }
+              }
+            }
+          });
+        } else {
+          chart.data.labels = labels;
+          chart.data.datasets[0].data = values;
+          chart.update();
+        }
+
+        statusEl.textContent = `Loaded ${data.length} events across ${labels.length} day(s).`;
+      } catch (err) {
+        console.error(err);
+        statusEl.textContent = 'Unexpected error loading data.';
+      } finally {
+        refreshBtn.disabled = false;
+      }
+    }
+
+    refreshBtn.addEventListener('click', loadClickData);
+    // initial load
+    loadClickData();
+  </script>
+
+</body>
+
+</html>
+
+
