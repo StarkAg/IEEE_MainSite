@@ -223,6 +223,11 @@ body.active { overflow: hidden; }
   object-fit: cover;
 }
 
+.keshav-img {
+  transform: scale(1.15);
+  transform-origin: center;
+}
+
 .btn-icon {
   background-color: var(--bg-color, var(--white));
   border-radius: var(--border-radius, var(--radius-circle));
@@ -727,11 +732,6 @@ body.active { overflow: hidden; }
 }
 
 .about-banner { position: relative; }
-
-/* Fine-tune Chair image so it visually matches other core cards */
-.keshav-banner .img-cover {
-  transform: scale(1.08);
-}
 
 .about .shape-1 {
   display: block;
