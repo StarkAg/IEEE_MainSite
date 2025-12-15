@@ -29,9 +29,9 @@
   <main style="padding-top: 120px;">
     <section class="section" aria-label="Admin analytics">
       <div class="container">
-        <h2 class="h2 section-title" style="margin-bottom: 10px;">Button Clicks Over Time</h2>
+        <h2 class="h2 section-title" style="margin-bottom: 10px;">Button Clicks - Last 24 Hours</h2>
         <p class="section-text" style="margin-bottom: 20px;">
-          This chart shows total button and team tile clicks per day across the site.
+          This chart shows button and team tile clicks for the last 24 hours, with a separate colored line for each button.
         </p>
 
         <button id="refresh-clicks" class="hackathon-btn-primary" style="margin-bottom: 25px;">
@@ -76,11 +76,14 @@
       refreshBtn.disabled = true;
 
       try {
+        // Fetch last 24 hours of events
+        const since = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString();
         const { data, error } = await supabaseClient
           .from('button_clicks')
-          .select('created_at')
+          .select('button_id, created_at')
+          .gte('created_at', since)
           .order('created_at', { ascending: true })
-          .limit(2000);
+          .limit(5000);
 
         if (error) {
           console.error(error);
@@ -90,7 +93,7 @@
         }
 
         if (!data || data.length === 0) {
-          statusEl.textContent = 'No click data yet. Try again after some interactions.';
+          statusEl.textContent = 'No click data for the last 24 hours. Try again after some interactions.';
           refreshBtn.disabled = false;
           if (chart) {
             chart.data.labels = [];
@@ -100,16 +103,62 @@
           return;
         }
 
-        // Aggregate by date (YYYY-MM-DD)
-        const countsByDay = {};
+        // Build 24 hourly buckets ending at "now"
+        const now = new Date();
+        const labels = [];
+        const bucketStartTimes = [];
+        for (let i = 23; i >= 0; i--) {
+          const bucketTime = new Date(now.getTime() - i * 60 * 60 * 1000);
+          bucketStartTimes.push(bucketTime);
+          labels.push(
+            bucketTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+          );
+        }
+
+        // Aggregate per button_id per hour bucket
+        const countsByButton = {};
         data.forEach(row => {
-          const d = new Date(row.created_at);
-          const key = d.toISOString().slice(0, 10);
-          countsByDay[key] = (countsByDay[key] || 0) + 1;
+          const eventTime = new Date(row.created_at);
+          const diffHours = Math.floor((now.getTime() - eventTime.getTime()) / (60 * 60 * 1000));
+          if (diffHours < 0 || diffHours > 23) return; // outside 24h window
+
+          const bucketIndex = 23 - diffHours; // 0 => oldest, 23 => current
+          const id = row.button_id || 'unknown';
+          if (!countsByButton[id]) {
+            countsByButton[id] = new Array(24).fill(0);
+          }
+          countsByButton[id][bucketIndex] += 1;
         });
 
-        const labels = Object.keys(countsByDay).sort();
-        const values = labels.map(l => countsByDay[l]);
+        const buttonIds = Object.keys(countsByButton);
+
+        if (buttonIds.length === 0) {
+          statusEl.textContent = 'No click data for the last 24 hours. Try again after some interactions.';
+          refreshBtn.disabled = false;
+          if (chart) {
+            chart.data.labels = [];
+            chart.data.datasets = [];
+            chart.update();
+          }
+          return;
+        }
+
+        // Generate colored datasets per button
+        const baseColors = [
+          '#ff457a', '#4bc0c0', '#9966ff', '#ff9f40',
+          '#36a2eb', '#ffcd56', '#2ecc71', '#e74c3c'
+        ];
+
+        const datasets = buttonIds.map((id, index) => {
+          const color = baseColors[index % baseColors.length];
+          return {
+            label: id,
+            data: countsByButton[id],
+            borderColor: color,
+            backgroundColor: color + '33',
+            tension: 0.25
+          };
+        });
 
         const ctx = document.getElementById('clickChart').getContext('2d');
         if (!chart) {
@@ -117,19 +166,13 @@
             type: 'line',
             data: {
               labels,
-              datasets: [{
-                label: 'Total Clicks per Day',
-                data: values,
-                borderColor: '#ff457a',
-                backgroundColor: 'rgba(255, 69, 122, 0.2)',
-                tension: 0.25
-              }]
+              datasets
             },
             options: {
               responsive: true,
               scales: {
                 x: {
-                  title: { display: true, text: 'Date' }
+                  title: { display: true, text: 'Time (last 24 hours, hourly)' }
                 },
                 y: {
                   beginAtZero: true,
@@ -141,11 +184,11 @@
           });
         } else {
           chart.data.labels = labels;
-          chart.data.datasets[0].data = values;
+          chart.data.datasets = datasets;
           chart.update();
         }
 
-        statusEl.textContent = `Loaded ${data.length} events across ${labels.length} day(s).`;
+        statusEl.textContent = `Loaded ${data.length} events across ${buttonIds.length} button(s) in the last 24 hours.`;
       } catch (err) {
         console.error(err);
         statusEl.textContent = 'Unexpected error loading data.';
