@@ -97,7 +97,7 @@
           refreshBtn.disabled = false;
           if (chart) {
             chart.data.labels = [];
-            chart.data.datasets[0].data = [];
+            chart.data.datasets = [];
             chart.update();
           }
           return;
