@@ -728,6 +728,11 @@ body.active { overflow: hidden; }
 
 .about-banner { position: relative; }
 
+/* Fine-tune Chair image so it visually matches other core cards */
+.keshav-banner .img-cover {
+  transform: scale(1.08);
+}
+
 .about .shape-1 {
   display: block;
   position: absolute;
